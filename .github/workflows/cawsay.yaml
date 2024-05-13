@@ -1,0 +1,26 @@
+name: CawSay
+
+on: push
+
+
+jobs:
+    Ascii_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+
+            - name: install cawsay program
+              run: sudo apt-get install cowsay -y
+              
+            - name: Execute cowsay CMD
+              run: cowsay -f dragon "Run for cover, i'am a Dragon....RAWR" >> dragon.txt
+
+            - name: Text File Exists
+              run: grep -i "dragon" dragon.txt
+
+            - name: Read File
+              run: cat dragon.txt
+
+            - name: checkout repo files
+              run: ls
